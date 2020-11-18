@@ -1,7 +1,8 @@
 # Cellular-Automata
 
+<h3><u>Objective</u></h3>
 
-<p>Implement the full class <strong>Automaton</strong> from the lectures.&nbsp; Test the class in a <strong>main()</strong> that works like the <strong>main()</strong> from the module.&nbsp; Show at least four different sample runs of width 79, giving 100 generations per run (to keep the output manageable). <span style="color: #cc0066;">Show me the runs for rules 4, 126 and 130.&nbsp; Add at least one more rule of your choice.</span></p>
+<p>The purpose here is to implement the full class <strong>Automaton</strong> from the lectures.&nbsp; In order to test the class in, at least four different sample runs of width 79, giving 100 generations per run needed to be generated. <span style="color: #cc0066;">Per requirementes, rules 4, 126 and 130 needed to be displayed.&nbsp; The last one was of our choice.</span></p>
 <p>Here is a repeat of the specification of the class.</p>
 <div style="border-style: solid; border-width: 1px; padding: 1px 4px 1px 4px;">
 <pre>class Automaton
@@ -25,19 +26,19 @@
 }
 </pre>
 </div>
-<p>The meaning and behavior of members and methods is in the modules, but here is a summary.</p>
+<p>Below summarizes the behavior of the members and methods within the Automaton class.</p>
 <ul>
 <li>
-<strong>Automaton(int rule)</strong> - a constructor. Through the mutator, below, we'll sanitize <strong>rule</strong> and then convert it to our internal representation. We also need to establish the seed: a single 1 in a sea of 0s (in this assignment a 1 means an asterisk, '*', and a 0 means a blank, ' '. This is accomplished more directly by setting <strong>thisGen</strong> to<span style="font-family: Courier New;"> "*"</span> and <strong>extremeBit</strong> to <span style="font-family: Courier New;">" "</span>.</li>
+<strong>Automaton(int rule)</strong> - a constructor. The mutator sanitizes the <strong>rule</strong> and then converts it to our internal representation. The seed is then established: a single 1 in a sea of 0s (in this assignment a 1 means an asterisk, '*', and a 0 means a blank, ' '. This is accomplished more directly by setting <strong>thisGen</strong> to<span style="font-family: Courier New;"> "*"</span> and <strong>extremeBit</strong> to <span style="font-family: Courier New;">" "</span>.</li>
 <li>
-<strong>String toStringCurrentGen()</strong> - This returns a string consisting of the current generation, <strong>thisGen</strong>, but does so by embedding it in a return String whose length is <em>exactly</em> <strong>displayWidth</strong> long. If <strong>thisGen</strong> is <em>smaller</em> than <strong>displayWidth</strong>, it is positioned in the center of the larger return string, with the excess padded by <strong>extremeBit</strong> characters. If <strong>thisGen</strong> is <em>longer</em> than <strong>displayWidth</strong>, it has to be truncated (on both ends) so that it is perfectly centered in the returned string, any excess trimmed off both ends, equally. You can easily do this with simple String objects and concatenation.</li>
+<strong>String toStringCurrentGen()</strong> - This returns a string consisting of the current generation, <strong>thisGen</strong>, but does so by embedding it in a return String whose length is <em>exactly</em> <strong>displayWidth</strong> long. If <strong>thisGen</strong> is <em>smaller</em> than <strong>displayWidth</strong>, it is positioned in the center of the larger return string, with the excess padded by <strong>extremeBit</strong> characters. If <strong>thisGen</strong> is <em>longer</em> than <strong>displayWidth</strong>, it has to be truncated (on both ends) so that it is perfectly centered in the returned string, any excess trimmed off both ends, equally. </li>
 <li>
 <strong>Two Mutators</strong>:
 <ul>
 <li>
 <strong>boolean setRule(int newRule)</strong> - converts the int <strong>newRule</strong>, a number from 0-255, to an array of eight <strong>booleans</strong>.&nbsp; For example, if the <strong>newRule</strong> is <strong>182</strong>, then this is the binary number <strong>1 </strong> <span style="color: #ff0000;"><strong> <span style="background-color: #33cccc;">0</span></strong></span><strong> 1 1 0 1 </strong> <span style="color: #0000ff;"><strong> <span style="background-color: #ffff00;">1</span></strong></span><strong> 0</strong>, which means that the resultant array will be
 <blockquote>rule[7] = true, <br> <span style="color: #ff0000;"> <span style="background-color: #33cccc; font-weight: bold;"> rule[6] = false </span> </span>, <br> rule[5] = true, <br> rule[4] = true, <br> rule[3] = false, <br> rule[2] = true, <br> <span style="color: #0000ff;"> <span style="background-color: #ffff00; font-weight: bold;"> rule[1] = true </span> </span> , <br> rule[0] = false.</blockquote>
-I have color coded two of the bits in <strong>182</strong> and their corresponding <strong>booleans</strong> in the array <strong>rule[]</strong> so you can easily see how the conversion needs to work.&nbsp; As usual, this must sanitize the <strong>int</strong> so that only values in the legal range 0-255 are allowed.</li>
+</li>
 <li>
 <strong>boolean setDisplayWidth(int width)</strong> - this is described by the earlier description of <strong>displayWidth</strong> and <strong>MAX_DISPLAY_WIDTH</strong>. I repeat that only odd widths are allowed (for centering purposes).</li>
 </ul>
